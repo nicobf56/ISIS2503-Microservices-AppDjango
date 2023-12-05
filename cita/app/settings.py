@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'measurements',
+    'citas',
 ]
 
 MIDDLEWARE = [
@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'monitoring.urls'
+ROOT_URLCONF = 'app.urls'
 
 TEMPLATES = [
     {
@@ -68,7 +68,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'monitoring.wsgi.application'
+WSGI_APPLICATION = 'app.wsgi.application'
 
 
 # Database
@@ -77,13 +77,14 @@ WSGI_APPLICATION = 'monitoring.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get("MEASUREMENTS_DB", "measurements_db"),
-        'USER': os.environ.get("MEASUREMENTS_DB_USER", "measurements_user"),
-        'PASSWORD': os.environ.get("MEASUREMENTS_DB_PASSWD", "isis2503"),
-        'HOST': os.environ.get("MEASUREMENTS_DB_HOST", "0.0.0.0"),
-        'PORT': os.environ.get("MEASUREMENTS_DB_PORT", "5432")
+        'NAME': 'citas_db',
+        'USER': 'citas_user',
+        'PASSWORD': 'isis2503',
+        'HOST': '10.128.0.2',
+        'PORT': '5432',
     }
 }
+
 
 
 # Password validation
@@ -133,4 +134,6 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
 
-PATH_VAR = "http://" + os.environ.get("VARIABLES_HOST", "0.0.0.0") + ":" + os.environ.get("VARIABLES_PORT", "8080") + "/variables"
+PATH_VAR = "http://" + os.environ.get("MEDICOS_HOST", "0.0.0.0") + ":" + os.environ.get("MEDICOS_PORT", "8080") + "/medicos"
+PATH_VAR = "http://" + os.environ.get("HORARIOS_HOST", "0.0.0.0") + ":" + os.environ.get("HORARIOS_PORT", "8080") + "/horarios"
+PATH_VAR = "http://" + os.environ.get("PACIENTES_HOST", "0.0.0.0") + ":" + os.environ.get("PACIENTES_PORT", "8080") + "/pacientes"
